@@ -15,8 +15,8 @@ public class UserService {
         return userDao.findById(id);
     }
 
-    public void saveUser(User user) {
-        userDao.save(user);
+    public void saveUser(String nickname, String password) {
+        userDao.save(nickname, password);
     }
 
     public void deleteUser(User user) {

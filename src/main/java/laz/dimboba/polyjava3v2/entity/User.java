@@ -3,13 +3,13 @@ package laz.dimboba.polyjava3v2.entity;
 
 public class User {
 
-    public Integer id;
+    private Integer id;
 
-    public String nickname;
+    private String nickname;
 
-    public String password;
+    private String password;
 
-    public Integer score;
+    private Integer score;
 
     public User(int id, String nickname, String password, int score){
         this.id = id;

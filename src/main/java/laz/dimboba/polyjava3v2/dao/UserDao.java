@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface UserDao {
     public User findById(int id);
-    public void save(User user);
+    public void save(String nickname, String password);
     public void update(User user);
     public void delete(User user);
     public List<User> findAllUsers();

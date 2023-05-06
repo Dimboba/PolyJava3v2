@@ -9,9 +9,12 @@ public class MainApp extends Application {
 
     public void start(Stage mainStage) throws Exception{
         UserService userService = new UserService();
-        User user = userService.findUser(1);
+        User user = userService.findUser(14);
         System.out.println(user.toString());
         System.out.println(user.getScore());
+
+
+        userService.saveUser("hello", "2345");
     }
 
     public static void main(String[] args){
