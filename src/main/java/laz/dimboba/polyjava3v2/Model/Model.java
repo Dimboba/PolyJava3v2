@@ -11,6 +11,7 @@ public class Model {
     private int closedCells;
     private final List<Cell> cells;
     private List<GameListener> listeners;
+    private Cell firstCell = null;
 
     public Model(int numOfCols, int numOfRows) throws NotEvenCellsNumberException {
         this.numOfCols = numOfCols;
@@ -20,6 +21,9 @@ public class Model {
         if(numOfCols % 2 != 0 && numOfRows % 2 != 0){
             throw new NotEvenCellsNumberException(numOfCols * numOfRows + " - is not even number");
         }
+
+        listeners = new ArrayList<>();
+
         cells = new ArrayList<Cell>();
         for(int i = 0; i < numOfRows; i++){
             for(int j = 0; j < numOfCols; j++){
@@ -32,7 +36,7 @@ public class Model {
 
     public Cell getCell(int col, int row){
         for(Cell cell: cells){
-            if(cell.getRow() == row && cell.getColumn() == col){
+            if(cell.getRow() == row && cell.getCol() == col){
                 return cell;
             }
         }
@@ -43,20 +47,33 @@ public class Model {
         listeners.add(gameListener);
     }
 
-    public void makeTurn(Cell cell1, Cell cell2){
+    public void makeTurn(Cell cell){
+        cell.setOpened(true);
+        listeners.forEach(listener -> listener.makeTurn(cell));
+        if(firstCell == null){
+            firstCell = cell;
+            return;
+        }
+        checkPairs(firstCell, cell);
+        firstCell = null;
+    }
+
+    private void checkPairs(Cell cell1, Cell cell2){
         if(cell1.getPairCell() == cell2){
-            cell1.setOpened(true);
-            cell2.setOpened(true);
+            System.out.println("Right pair");
             closedCells -= 2;
             if(closedCells == 0){
+                System.out.println("Win");
                 listeners.forEach(listener -> listener.endGame());
                 return;
             }
             listeners.forEach(listener -> listener.rightPair(cell1, cell2));
             return;
         }
-
-        listeners.forEach(listener -> listener.wrongPair());
+        cell1.setOpened(false);
+        cell2.setOpened(false);
+        System.out.println("Wrong pair");
+        listeners.forEach(listener -> listener.wrongPair(cell1, cell2));
     }
 
     private void makeNewPairs(){
@@ -67,4 +84,20 @@ public class Model {
         listeners.forEach(listener -> listener.newGame());
     }
 
+
+    public int getNumOfCols() {
+        return numOfCols;
+    }
+
+    public int getNumOfRows() {
+        return numOfRows;
+    }
+
+    public int getNumOfCells() {
+        return numOfCells;
+    }
+
+    public int getClosedCells() {
+        return closedCells;
+    }
 }

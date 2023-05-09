@@ -26,7 +26,12 @@ public class LeaderBoard implements GameListener{
         gameIsActive = false;
     }
     @Override
-    public void wrongPair() {
+    public void wrongPair(Cell cell1, Cell cell2) {
+
+    }
+
+    @Override
+    public void makeTurn(Cell cell) {
 
     }
 }
