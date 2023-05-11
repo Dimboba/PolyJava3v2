@@ -13,8 +13,12 @@ public class View extends BorderPane{
     public View (Model model, LeaderBoard leaderBoard){
         gameField = new GameField(model);
         model.addListener(gameField);
+        gameField.setPrefWidth(500);
+        gameField.setPrefHeight(500);
         this.setCenter(gameField);
         scoreField = new ScoreField(leaderBoard);
+        leaderBoard.addListener(scoreField);
+        scoreField.setPrefWidth(100);
         this.setLeft(scoreField);
 
     }

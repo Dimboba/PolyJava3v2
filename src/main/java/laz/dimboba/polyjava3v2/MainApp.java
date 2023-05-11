@@ -6,11 +6,10 @@ import javafx.stage.Stage;
 import laz.dimboba.polyjava3v2.Model.GameModel.Model;
 import laz.dimboba.polyjava3v2.Model.ScoreBoard.LeaderBoard;
 import laz.dimboba.polyjava3v2.Model.ScoreBoard.UserService.UserService;
+import laz.dimboba.polyjava3v2.Model.ScoreBoard.entity.User;
 import laz.dimboba.polyjava3v2.view.View;
 
 public class MainApp extends Application {
-    private final int windowWidth = 500;
-    private final int windowHeight = 500;
     private final int numOfRows = 2;
     private final int numOfCols = 2;
 
@@ -30,10 +29,12 @@ public class MainApp extends Application {
 //            System.out.println(user.toString());
 //        }
 
+        User testUser = new User(1001, "TestUser", "", 0);
+
         Model model = new Model(numOfRows, numOfCols);
-        LeaderBoard leaderBoard = new LeaderBoard();
+        LeaderBoard leaderBoard = new LeaderBoard(testUser);
         View root = new View(model, leaderBoard);
-        Scene scene = new Scene(root, windowWidth, windowHeight);
+        Scene scene = new Scene(root);
         //scene.getStylesheets().add(getClass().getResource("/style.css").toURI().toString());
         mainStage.setScene(scene);
         mainStage.setTitle("Testing");

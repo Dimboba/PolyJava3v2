@@ -2,6 +2,7 @@ package laz.dimboba.polyjava3v2.view.Score;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import laz.dimboba.polyjava3v2.Model.ScoreBoard.LeaderBoard;
@@ -13,6 +14,7 @@ public class ScoreField extends BorderPane implements LeaderBoardListener {
     private final ScoreBoard table;
     private final UserBar userBar;
     public ScoreField(LeaderBoard leaderBoard){
+        this.setPadding(new Insets(10, 10, 10, 10));
         this.leaderBoard = leaderBoard;
         this.table = new ScoreBoard(leaderBoard);
         this.userBar = new UserBar(leaderBoard);
@@ -22,9 +24,9 @@ public class ScoreField extends BorderPane implements LeaderBoardListener {
             refresh();
         });
 
-        this.setTop(btn);
-        this.setCenter(table);
-        this.setBottom(userBar);
+        //this.setTop(btn);
+        this.setBottom(table);
+        this.setTop(userBar);
     }
 
     @Override

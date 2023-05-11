@@ -11,12 +11,13 @@ import java.util.List;
 public class LeaderBoard implements GameListener {
 
     private boolean gameIsActive = false;
-    public boolean currUser = true;
+    private User currUser;
     private List<LeaderBoardListener> listeners;
     private List<User> topUsers = new ArrayList<>();
 
-    public LeaderBoard(){
+    public LeaderBoard(User currUser){
         UserService userService = new UserService();
+        this.currUser = currUser;
         topUsers = userService.findAllUsers();
         listeners = new ArrayList<>();
     }
@@ -25,9 +26,6 @@ public class LeaderBoard implements GameListener {
         listeners.add(listener);
     }
 
-    public void newUser(User user){
-
-    }
 
     @Override
     public void newGame() {
@@ -56,5 +54,9 @@ public class LeaderBoard implements GameListener {
         if(topUsers.size() < 15)
             return topUsers;
         return topUsers.subList(0, 15);
+    }
+
+    public User getCurrUser() {
+        return currUser;
     }
 }

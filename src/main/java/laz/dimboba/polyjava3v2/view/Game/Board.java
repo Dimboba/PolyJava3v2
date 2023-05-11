@@ -20,7 +20,6 @@ public class Board extends GridPane {
         cellButtonMap = new HashMap<>();
         listener = new BoardListener(model);
 
-        this.setPadding(new Insets(10, 10, 10, 10));
         this.setAlignment(Pos.CENTER);
         for (int i = 0; i < model.getNumOfRows(); i++) {
 
@@ -37,11 +36,13 @@ public class Board extends GridPane {
                 Cell currCell = model.getCell(i, j);
                 CellButton btn = new CellButton(currCell, listener, "#ff0000");
                 cellButtonMap.put(currCell, btn);
-                btn.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
 
+                btn.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
                 this.add(btn, i, j);
             }
         }
+
+
     }
 
     public CellButton getCellButton(Cell cell){ return cellButtonMap.get(cell); }

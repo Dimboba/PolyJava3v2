@@ -2,6 +2,7 @@ package laz.dimboba.polyjava3v2.view.Game;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.geometry.Insets;
 import javafx.scene.layout.BorderPane;
 import javafx.util.Duration;
 import laz.dimboba.polyjava3v2.Model.GameModel.Cell;
@@ -11,6 +12,8 @@ import laz.dimboba.polyjava3v2.Model.GameModel.Model;
 public class GameField extends BorderPane implements GameListener {
     private final Board board;
     public GameField(Model model){
+        this.setPadding(new Insets(10, 10, 10, 10));
+
         board = new Board(model);
         this.setCenter(board);
     }
