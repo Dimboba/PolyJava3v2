@@ -1,4 +1,4 @@
-package laz.dimboba.polyjava3v2.entity;
+package laz.dimboba.polyjava3v2.Model.ScoreBoard.entity;
 
 
 public class User {

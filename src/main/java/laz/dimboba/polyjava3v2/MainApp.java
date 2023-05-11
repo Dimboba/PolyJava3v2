@@ -3,8 +3,9 @@ package laz.dimboba.polyjava3v2;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import laz.dimboba.polyjava3v2.Model.Model;
-import laz.dimboba.polyjava3v2.UserService.UserService;
+import laz.dimboba.polyjava3v2.Model.GameModel.Model;
+import laz.dimboba.polyjava3v2.Model.ScoreBoard.LeaderBoard;
+import laz.dimboba.polyjava3v2.Model.ScoreBoard.UserService.UserService;
 import laz.dimboba.polyjava3v2.view.View;
 
 public class MainApp extends Application {
@@ -30,8 +31,10 @@ public class MainApp extends Application {
 //        }
 
         Model model = new Model(numOfRows, numOfCols);
-        View root = new View(model);
+        LeaderBoard leaderBoard = new LeaderBoard();
+        View root = new View(model, leaderBoard);
         Scene scene = new Scene(root, windowWidth, windowHeight);
+        //scene.getStylesheets().add(getClass().getResource("/style.css").toURI().toString());
         mainStage.setScene(scene);
         mainStage.setTitle("Testing");
         mainStage.show();

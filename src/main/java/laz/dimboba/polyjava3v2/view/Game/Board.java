@@ -1,13 +1,13 @@
-package laz.dimboba.polyjava3v2.view;
+package laz.dimboba.polyjava3v2.view.Game;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
-import laz.dimboba.polyjava3v2.Controller.BoardListener;
-import laz.dimboba.polyjava3v2.Model.Cell;
-import laz.dimboba.polyjava3v2.Model.Model;
+import laz.dimboba.polyjava3v2.Controller.GameController.BoardListener;
+import laz.dimboba.polyjava3v2.Model.GameModel.Cell;
+import laz.dimboba.polyjava3v2.Model.GameModel.Model;
 
 import java.util.HashMap;
 //TODO: добавить цвета

@@ -1,6 +1,6 @@
-package laz.dimboba.polyjava3v2.dao;
+package laz.dimboba.polyjava3v2.Model.ScoreBoard.dao;
 
-import laz.dimboba.polyjava3v2.entity.User;
+import laz.dimboba.polyjava3v2.Model.ScoreBoard.entity.User;
 
 import java.util.List;
 

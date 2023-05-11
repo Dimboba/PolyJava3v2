@@ -1,4 +1,4 @@
-package laz.dimboba.polyjava3v2.utils;
+package laz.dimboba.polyjava3v2.Model.ScoreBoard.utils;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

@@ -1,7 +1,7 @@
-package laz.dimboba.polyjava3v2.Controller;
+package laz.dimboba.polyjava3v2.Controller.GameController;
 
-import laz.dimboba.polyjava3v2.Model.Cell;
-import laz.dimboba.polyjava3v2.Model.Model;
+import laz.dimboba.polyjava3v2.Model.GameModel.Cell;
+import laz.dimboba.polyjava3v2.Model.GameModel.Model;
 
 public class BoardListener implements CellListener{
     private final Model model;

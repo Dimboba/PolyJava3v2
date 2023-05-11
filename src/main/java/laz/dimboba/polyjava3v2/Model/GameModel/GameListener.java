@@ -1,4 +1,4 @@
-package laz.dimboba.polyjava3v2.Model;
+package laz.dimboba.polyjava3v2.Model.GameModel;
 
 public interface GameListener{
     void makeTurn(Cell cell);

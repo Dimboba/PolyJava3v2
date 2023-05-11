@@ -1,8 +1,9 @@
-package laz.dimboba.polyjava3v2.view;
+package laz.dimboba.polyjava3v2.view.Game;
 
 import javafx.scene.control.Button;
-import laz.dimboba.polyjava3v2.Controller.CellListener;
-import laz.dimboba.polyjava3v2.Model.Cell;
+import laz.dimboba.polyjava3v2.Controller.GameController.CellListener;
+import laz.dimboba.polyjava3v2.Model.GameModel.Cell;
+import laz.dimboba.polyjava3v2.view.Score.ScoreField;
 
 public class CellButton extends Button {
     private final Cell cell;

@@ -1,13 +1,12 @@
-package laz.dimboba.polyjava3v2.view;
+package laz.dimboba.polyjava3v2.view.Game;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
 import javafx.util.Duration;
-import laz.dimboba.polyjava3v2.Model.Cell;
-import laz.dimboba.polyjava3v2.Model.GameListener;
-import laz.dimboba.polyjava3v2.Model.Model;
+import laz.dimboba.polyjava3v2.Model.GameModel.Cell;
+import laz.dimboba.polyjava3v2.Model.GameModel.GameListener;
+import laz.dimboba.polyjava3v2.Model.GameModel.Model;
 
 public class GameField extends BorderPane implements GameListener {
     private final Board board;
