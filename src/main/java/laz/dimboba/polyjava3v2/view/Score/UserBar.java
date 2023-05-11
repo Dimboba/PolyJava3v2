@@ -23,7 +23,9 @@ public class UserBar extends VBox {
 
         HBox buttons = new HBox();
         Button logOut = new Button("Log Out");
+        //TODO: при выходе очки никому не начисляются, игра прекращается, выползает окно
         Button account = new Button("Account");
+        //TODO:
         buttons.getChildren().addAll(logOut, account);
         buttons.setAlignment(Pos.CENTER);
         buttons.setSpacing(5);

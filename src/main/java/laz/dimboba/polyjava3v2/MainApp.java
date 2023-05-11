@@ -33,6 +33,8 @@ public class MainApp extends Application {
 
         Model model = new Model(numOfRows, numOfCols);
         LeaderBoard leaderBoard = new LeaderBoard(testUser);
+        model.addListener(leaderBoard);
+
         View root = new View(model, leaderBoard);
         Scene scene = new Scene(root);
         //scene.getStylesheets().add(getClass().getResource("/style.css").toURI().toString());

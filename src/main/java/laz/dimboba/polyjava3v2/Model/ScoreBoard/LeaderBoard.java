@@ -11,12 +11,14 @@ import java.util.List;
 public class LeaderBoard implements GameListener {
 
     private boolean gameIsActive = false;
+    private boolean gameForPoints = true;
     private User currUser;
     private List<LeaderBoardListener> listeners;
     private List<User> topUsers = new ArrayList<>();
+    private UserService userService;
 
     public LeaderBoard(User currUser){
-        UserService userService = new UserService();
+        userService = new UserService();
         this.currUser = currUser;
         topUsers = userService.findAllUsers();
         listeners = new ArrayList<>();
@@ -29,6 +31,9 @@ public class LeaderBoard implements GameListener {
 
     @Override
     public void newGame() {
+        if(currUser != null){
+            gameForPoints = true;
+        }
         gameIsActive = true;
     }
     @Override
@@ -37,6 +42,9 @@ public class LeaderBoard implements GameListener {
     }
     @Override
     public void endGame() {
+        if(gameForPoints){
+            //TODO: начислять поинты
+        }
         gameIsActive = false;
     }
     @Override
@@ -49,7 +57,6 @@ public class LeaderBoard implements GameListener {
     }
 
     public List<User> getTopUsers() {
-        UserService userService = new UserService();
         topUsers = userService.findAllUsers();
         if(topUsers.size() < 15)
             return topUsers;
@@ -58,5 +65,20 @@ public class LeaderBoard implements GameListener {
 
     public User getCurrUser() {
         return currUser;
+    }
+
+    public void setCurrUser(User user){
+        currUser = user;
+        if(gameIsActive){
+            gameForPoints = false;
+        }
+    }
+
+    public void changePassword(String newPassword){
+        if(currUser == null){
+            return;
+        }
+        currUser.setPassword(newPassword);
+        userService.updateUser(currUser);
     }
 }
