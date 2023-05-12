@@ -1,11 +1,11 @@
 package laz.dimboba.polyjava3v2.view;
 
 import javafx.scene.layout.BorderPane;
-import laz.dimboba.polyjava3v2.Model.GameModel.Model;
-import laz.dimboba.polyjava3v2.Model.ScoreBoard.LeaderBoard;
-import laz.dimboba.polyjava3v2.view.Game.GameField;
-import laz.dimboba.polyjava3v2.view.Score.ScoreBoard;
-import laz.dimboba.polyjava3v2.view.Score.ScoreField;
+import laz.dimboba.polyjava3v2.model.game.Model;
+import laz.dimboba.polyjava3v2.model.game.ModelImpl;
+import laz.dimboba.polyjava3v2.model.scoreboard.LeaderBoard;
+import laz.dimboba.polyjava3v2.view.game.GameField;
+import laz.dimboba.polyjava3v2.view.score.ScoreField;
 
 public class View extends BorderPane{
     private final GameField gameField;

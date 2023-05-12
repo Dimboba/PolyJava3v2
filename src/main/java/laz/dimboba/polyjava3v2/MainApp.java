@@ -3,10 +3,13 @@ package laz.dimboba.polyjava3v2;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import laz.dimboba.polyjava3v2.Model.GameModel.Model;
-import laz.dimboba.polyjava3v2.Model.ScoreBoard.LeaderBoard;
-import laz.dimboba.polyjava3v2.Model.ScoreBoard.UserService.UserService;
-import laz.dimboba.polyjava3v2.Model.ScoreBoard.entity.User;
+import laz.dimboba.polyjava3v2.model.game.ColourModel;
+import laz.dimboba.polyjava3v2.model.game.Model;
+import laz.dimboba.polyjava3v2.model.game.ModelImpl;
+import laz.dimboba.polyjava3v2.model.game.SoundModel;
+import laz.dimboba.polyjava3v2.model.scoreboard.LeaderBoard;
+import laz.dimboba.polyjava3v2.model.scoreboard.userservice.UserService;
+import laz.dimboba.polyjava3v2.model.scoreboard.entity.User;
 import laz.dimboba.polyjava3v2.view.View;
 
 public class MainApp extends Application {
@@ -31,7 +34,7 @@ public class MainApp extends Application {
 
         User testUser = new User(1001, "TestUser", "", 0);
 
-        Model model = new Model(numOfRows, numOfCols);
+        Model model = new ColourModel(numOfRows, numOfCols);
         LeaderBoard leaderBoard = new LeaderBoard(testUser);
         model.addListener(leaderBoard);
 
