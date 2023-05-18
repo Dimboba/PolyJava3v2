@@ -6,7 +6,7 @@ public abstract class CellImpl implements Cell{
     private Cell pairCell;
     private boolean opened;
     private int numOfPair;
-
+    String colour;
     @Override
     public void pairCells(Cell pairCell, int numOfPair){
         this.pairCell = pairCell;
@@ -65,5 +65,15 @@ public abstract class CellImpl implements Cell{
     }
     public Cell getPairCell() {
         return pairCell;
+    }
+
+    @Override
+    public String getColour() {
+        return colour;
+    }
+
+    @Override
+    public void setColour(String colour) {
+        this.colour = colour;
     }
 }

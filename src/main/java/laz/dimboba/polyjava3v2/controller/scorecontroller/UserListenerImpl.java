@@ -1,6 +1,8 @@
 package laz.dimboba.polyjava3v2.controller.scorecontroller;
 
 import laz.dimboba.polyjava3v2.model.scoreboard.LeaderBoard;
+import laz.dimboba.polyjava3v2.model.scoreboard.entity.User;
+import laz.dimboba.polyjava3v2.model.scoreboard.userservice.UserService;
 
 public class UserListenerImpl implements UserListener{
     private LeaderBoard leaderBoard;
@@ -15,7 +17,7 @@ public class UserListenerImpl implements UserListener{
 
     @Override
     public void logOut() {
-        leaderBoard.setCurrUser(null);
+        leaderBoard.logOut();
     }
 
     @Override
@@ -25,7 +27,9 @@ public class UserListenerImpl implements UserListener{
 
     @Override
     public void logIn(String nickname, String password){
-        //Можно ли использовать тут бд???
+        leaderBoard.logIn(nickname, password);
+        //TODO: придумать что с логином!!! (непонятно, что делать в случае неудачи)
+        //TODO: мб сделать в лидер борде не setCurrUser a login logout
     }
 
 }

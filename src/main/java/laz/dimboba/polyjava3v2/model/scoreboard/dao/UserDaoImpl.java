@@ -34,6 +34,31 @@ public class UserDaoImpl implements UserDao{
         return new User();
     }
 
+    public User findByNickname(String searchNickname){
+        try {
+            Connection connection = new ConnectionFactory().getNewConnection();
+            Statement statement = connection.createStatement();
+            String query = "Select * FROM users where nickname in (\'" + searchNickname + "\')";
+
+            ResultSet res = statement.executeQuery(query);
+            res.next();
+
+            String nickname = res.getString("nickname");
+            int id = res.getInt("id");
+            String password = res.getString("password");
+            int score = res.getInt("score");
+
+            connection.close();
+            return new User(id, nickname, password, score);
+
+        } catch (SQLException e){
+            System.err.println("FindByNickname Error");
+            System.err.println(e.getMessage());
+        }
+
+        return new User();
+    }
+
     public void save(String nickname, String passwd) {
         try {
             Connection connection = new ConnectionFactory().getNewConnection();

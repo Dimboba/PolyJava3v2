@@ -13,6 +13,7 @@ public abstract class ModelImpl implements Model{
     private List<GameListener> listeners;
     private Cell firstCell = null;
 
+
     protected ModelImpl(int numOfCols, int numOfRows) throws NotEvenCellsNumberException {
         this.numOfCols = numOfCols;
         this.numOfRows = numOfRows;
@@ -58,7 +59,6 @@ public abstract class ModelImpl implements Model{
             if(closedCells == 0){
                 System.out.println("Win");
                 listeners.forEach(listener -> listener.endGame());
-                return;
             }
             listeners.forEach(listener -> listener.rightPair(cell1, cell2));
             return;

@@ -21,7 +21,19 @@ public class GameField extends BorderPane implements GameListener {
 
     @Override
     public void rightPair(Cell cell1, Cell cell2) {
+        int showTime = 1250;
 
+        CellButton cellButton1 = board.getCellButton(cell1);
+        CellButton cellButton2 = board.getCellButton(cell2);
+
+        Timeline timeline = new Timeline(
+                new KeyFrame(Duration.millis(showTime),
+                        ev -> {
+                            cellButton1.setVisible(false);
+                            cellButton2.setVisible(false);
+                        }));
+        timeline.setCycleCount(1);
+        timeline.play();
     }
 
     @Override

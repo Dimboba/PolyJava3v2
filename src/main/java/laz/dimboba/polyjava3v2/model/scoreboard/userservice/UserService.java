@@ -11,6 +11,11 @@ public class UserService {
 
     public UserService() {}
 
+    public User logIn(String nickname, String password){
+        User user = userDao.findByNickname(nickname);
+        return user;
+    }
+
     public User findUser(int id) {
         return userDao.findById(id);
     }

@@ -33,7 +33,7 @@ public class MainApp extends Application {
 //        }
 
         User testUser = new User(1001, "TestUser", "", 0);
-
+//        System.out.println(userService.logIn("dick", "1234").toString());
         Model model = new ColourModel(numOfRows, numOfCols);
         LeaderBoard leaderBoard = new LeaderBoard(testUser);
         model.addListener(leaderBoard);

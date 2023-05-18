@@ -11,4 +11,6 @@ public interface Cell {
     int getNumOfPair();
     void setNumOfPair(int num);
     void setPairCell(Cell cell);
+    String getColour();
+    void setColour(String colour);
 }

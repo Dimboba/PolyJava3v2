@@ -9,4 +9,5 @@ public class ColourCell extends CellImpl{
     public void onClick() {
 
     }
+
 }

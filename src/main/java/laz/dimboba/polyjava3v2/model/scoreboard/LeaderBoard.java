@@ -7,7 +7,8 @@ import laz.dimboba.polyjava3v2.model.scoreboard.entity.User;
 
 import java.util.ArrayList;
 import java.util.List;
-//TODO: дополнить, в частности убрать обновление списка при вызове get (добавил для теста)
+
+//TODO: доделать, добавить login logout refresh
 public class LeaderBoard implements GameListener {
 
     private boolean gameIsActive = false;
@@ -16,6 +17,10 @@ public class LeaderBoard implements GameListener {
     private List<LeaderBoardListener> listeners;
     private List<User> topUsers = new ArrayList<>();
     private UserService userService;
+
+    public LeaderBoard(){
+        this(null);
+    }
 
     public LeaderBoard(User currUser){
         userService = new UserService();
@@ -67,8 +72,30 @@ public class LeaderBoard implements GameListener {
         return currUser;
     }
 
-    public void setCurrUser(User user){
-        currUser = user;
+    public void logIn(String nickname, String password){
+        UserService userService = new UserService();
+        User user = userService.logIn(nickname, password);
+
+        if (user == null || user.getNickname() == null){
+            listeners.forEach(listener -> listener.logInError("Wrong nickname"));
+            currUser = null;
+            return;
+        }
+        if(user.getNickname().equals(nickname)
+                && user.getPassword().equals(password)){
+            currUser = user;
+            listeners.forEach(listener -> listener.logInSuccess());
+            if(gameIsActive){
+                gameForPoints = false;
+            }
+        } else if(user.getNickname().equals(nickname)){
+            listeners.forEach(listener -> listener.logInError("Wrong password"));
+        }
+
+    }
+    public void logOut() {
+        currUser = null;
+        listeners.forEach(listener -> listener.logOut());
         if(gameIsActive){
             gameForPoints = false;
         }

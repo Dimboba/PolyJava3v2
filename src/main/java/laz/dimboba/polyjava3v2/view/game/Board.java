@@ -33,7 +33,7 @@ public class Board extends GridPane {
             for (int j = 0; j < model.getNumOfCols(); j++) {
 
                 Cell currCell = model.getCell(i, j);
-                CellButton btn = new CellButton(currCell, listener, "#ff0000");
+                CellButton btn = new CellButton(currCell, listener);
                 cellButtonMap.put(currCell, btn);
 
                 btn.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
