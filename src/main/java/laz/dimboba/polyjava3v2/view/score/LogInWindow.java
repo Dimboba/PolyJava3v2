@@ -1,5 +1,7 @@
 package laz.dimboba.polyjava3v2.view.score;
 
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
@@ -20,6 +22,10 @@ public class LogInWindow extends Dialog<ButtonType> {
         root.setContent(grid);
         Text sceneTitle = new Text("Welcome");
         grid.add(sceneTitle, 0, 0, 2, 1);
+        grid.setAlignment(Pos.CENTER);
+        grid.setHgap(10);
+        grid.setVgap(10);
+        grid.setPadding(new Insets(25, 25, 25, 25));
 
         Label userName = new Label("Nickname:");
         grid.add(userName, 0, 1);

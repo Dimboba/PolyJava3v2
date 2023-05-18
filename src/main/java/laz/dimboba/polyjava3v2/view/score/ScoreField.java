@@ -22,6 +22,7 @@ public class ScoreField extends BorderPane implements LeaderBoardListener {
         this.table = new ScoreBoard(leaderBoard);
         this.userBar = new UserBar(leaderBoard, listener);
 
+        //for tests
         Button btn = new Button("refresh");
         btn.setOnAction(event -> {
             refresh();

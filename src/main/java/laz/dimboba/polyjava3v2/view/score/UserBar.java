@@ -14,6 +14,7 @@ public class UserBar extends VBox {
     private final Label nickname;
     private final Label score;
     private final LeaderBoard leaderBoard;
+    private final LogInOutButton logInOut;
     UserBar(LeaderBoard leaderBoard, UserListener listener){
         this.leaderBoard = leaderBoard;
         this.listener = listener;
@@ -22,28 +23,15 @@ public class UserBar extends VBox {
         this.setSpacing(10);
 
         HBox buttons = new HBox();
-        Button logOut = new Button("Log Out");
+        if(leaderBoard.getCurrUser() == null) {
+            logInOut = new LogInOutButton("Log In", leaderBoard, listener);
+        } else {
+            logInOut = new LogInOutButton("Log Out", leaderBoard, listener);
+        }
         //TODO: при выходе очки никому не начисляются, игра прекращается, выползает окно
-        logOut.setOnAction(event -> {
-            if(leaderBoard.getCurrUser() == null){
-                LogInWindow window = new LogInWindow();
-                window.showAndWait();
-                if(window.getResult().getButtonData() == ButtonBar.ButtonData.OK_DONE){
-                    listener.logIn(window.getNickname(), window.getPassword());
-                }
-                return;
-            }
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION,
-                    "Are you really want to log out?",
-                    ButtonType.YES, ButtonType.NO);
-            alert.showAndWait();
-            if (alert.getResult() == ButtonType.YES) {
-                listener.logOut();
-            }
-        });
         Button account = new Button("Account");
 
-        buttons.getChildren().addAll(logOut, account);
+        buttons.getChildren().addAll(logInOut, account);
         buttons.setAlignment(Pos.CENTER);
         buttons.setSpacing(5);
 
@@ -59,11 +47,14 @@ public class UserBar extends VBox {
 
     public void refresh(){
         if (leaderBoard.getCurrUser() == null){
+            logInOut.setText("Log In");
             nickname.setText("You are not logged in");
             score.setText("To farm points log in");
             return;
         }
+        logInOut.setText("Log Out");
         nickname.setText("Nickname:  " + leaderBoard.getCurrUser().getNickname());
         score.setText("Score:  " + leaderBoard.getCurrUser().getScore());
     }
+
 }
