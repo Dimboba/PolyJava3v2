@@ -21,10 +21,11 @@ public class CellButton extends Button {
 
     public void flip() {
         if(cell.isOpened()) {
-            this.setStyle("-fx-background-color: " + cell.getColour() + "; ");
+            //this.setStyle("-fx-background-color: " + cell.getColour() + "; ");
             return;
         }
 
         this.setStyle(baseStyle);
     }
+
 }
