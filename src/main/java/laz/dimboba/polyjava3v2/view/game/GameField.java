@@ -1,5 +1,6 @@
 package laz.dimboba.polyjava3v2.view.game;
 
+import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.geometry.Insets;
@@ -12,6 +13,8 @@ import laz.dimboba.polyjava3v2.model.game.ModelImpl;
 
 public class GameField extends BorderPane implements GameListener {
     private final Board board;
+    private Timeline timeline;
+    private final int showTime = 1250;
     public GameField(Model model){
         this.setPadding(new Insets(10, 10, 10, 10));
 
@@ -21,12 +24,10 @@ public class GameField extends BorderPane implements GameListener {
 
     @Override
     public void rightPair(Cell cell1, Cell cell2) {
-        int showTime = 1250;
-
         CellButton cellButton1 = board.getCellButton(cell1);
         CellButton cellButton2 = board.getCellButton(cell2);
 
-        Timeline timeline = new Timeline(
+        timeline = new Timeline(
                 new KeyFrame(Duration.millis(showTime),
                         ev -> {
                             cellButton1.setVisible(false);
@@ -38,12 +39,10 @@ public class GameField extends BorderPane implements GameListener {
 
     @Override
     public void wrongPair(Cell cell1, Cell cell2) {
-        int showTime = 1250;
-
         CellButton cellButton1 = board.getCellButton(cell1);
         CellButton cellButton2 = board.getCellButton(cell2);
 
-        Timeline timeline = new Timeline(
+        timeline = new Timeline(
                 new KeyFrame(Duration.millis(showTime),
                         ev -> {
                             cellButton1.flip();
@@ -59,6 +58,10 @@ public class GameField extends BorderPane implements GameListener {
         CellButton cellButton = board.getCellButton(cell);
         cellButton.flip();
 
+        if(timeline != null && timeline.getStatus() == Animation.Status.RUNNING){
+            timeline.stop();
+            timeline.playFrom(Duration.millis(showTime));
+        }
     }
 
     @Override
