@@ -31,11 +31,9 @@ public class MainApp extends Application {
 //        for(User user: users){
 //            System.out.println(user.toString());
 //        }
-
-        User testUser = new User(1001, "TestUser", "", 0);
-//        System.out.println(userService.logIn("dick", "1234").toString());
+        //TODO: добавить создание таблицы
         Model model = new ColourModel(numOfRows, numOfCols);
-        LeaderBoard leaderBoard = new LeaderBoard(testUser);
+        LeaderBoard leaderBoard = new LeaderBoard();
         model.addListener(leaderBoard);
 
         View root = new View(model, leaderBoard);

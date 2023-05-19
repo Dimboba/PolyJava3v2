@@ -32,8 +32,8 @@ public class ColourModel extends ModelImpl {
     public void makeNewPairs(){
         super.makeNewPairs();
         for(int i = 0; i < super.getCells().size()/2; i++) {
-            super.getCells().get(i).setColour(colors[i]);
-            super.getCells().get(i).getPairCell().setColour(colors[i]);
+            ((ColourCell) super.getCells().get(i)).setColour(colors[i]);
+            ((ColourCell) super.getCells().get(i).getPairCell()).setColour(colors[i]);
         }
     }
 }

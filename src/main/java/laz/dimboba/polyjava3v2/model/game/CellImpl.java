@@ -1,12 +1,13 @@
 package laz.dimboba.polyjava3v2.model.game;
 
+import java.util.function.Consumer;
+
 public abstract class CellImpl implements Cell{
     private final int col;
     private final int row;
     private Cell pairCell;
     private boolean opened;
     private int numOfPair;
-    String colour;
     @Override
     public void pairCells(Cell pairCell, int numOfPair){
         this.pairCell = pairCell;
@@ -37,7 +38,7 @@ public abstract class CellImpl implements Cell{
     }
 
     @Override
-    public abstract void onClick();
+    public abstract void onClick(Consumer<String> consumer);
 
     public void setNumOfPair(int newPair){
         this.numOfPair = newPair;
@@ -67,13 +68,4 @@ public abstract class CellImpl implements Cell{
         return pairCell;
     }
 
-    @Override
-    public String getColour() {
-        return colour;
-    }
-
-    @Override
-    public void setColour(String colour) {
-        this.colour = colour;
-    }
 }

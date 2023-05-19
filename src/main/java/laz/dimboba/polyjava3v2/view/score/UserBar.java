@@ -36,13 +36,14 @@ public class UserBar extends VBox {
         buttons.setSpacing(5);
 
         VBox userInfo = new VBox();
-        nickname = new Label("Nickname:  " + leaderBoard.getCurrUser().getNickname());
-        score = new Label("Score:  " + leaderBoard.getCurrUser().getScore());
+        nickname = new Label();
+        score = new Label();
         userInfo.getChildren().addAll(nickname, score);
         userInfo.setSpacing(5);
 
         this.getChildren().add(0, userInfo);
         this.getChildren().add(1, buttons);
+        refresh();
     }
 
     public void refresh(){
