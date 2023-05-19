@@ -7,6 +7,6 @@ public class SoundCell extends CellImpl{
 
     @Override
     public void onClick() {
-
+        System.out.println(super.getColour());
     }
 }

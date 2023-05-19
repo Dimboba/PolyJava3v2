@@ -7,7 +7,7 @@ public class ColourCell extends CellImpl{
 
     @Override
     public void onClick() {
-
+        System.out.println(super.getColour());
     }
 
 }
