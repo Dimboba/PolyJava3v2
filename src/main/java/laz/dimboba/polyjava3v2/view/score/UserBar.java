@@ -40,6 +40,7 @@ public class UserBar extends VBox {
         score = new Label();
         userInfo.getChildren().addAll(nickname, score);
         userInfo.setSpacing(5);
+        userInfo.setAlignment(Pos.CENTER);
 
         this.getChildren().add(0, userInfo);
         this.getChildren().add(1, buttons);
@@ -49,8 +50,8 @@ public class UserBar extends VBox {
     public void refresh(){
         if (leaderBoard.getCurrUser() == null){
             logInOut.setText("Log In");
-            nickname.setText("You are not logged in");
-            score.setText("To farm points log in");
+            nickname.setText("You are guest");
+            score.setText("Log in to farm points");
             return;
         }
         logInOut.setText("Log Out");

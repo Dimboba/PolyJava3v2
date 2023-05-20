@@ -13,6 +13,7 @@ import laz.dimboba.polyjava3v2.view.game.CreateGameForm;
 import laz.dimboba.polyjava3v2.view.game.GameField;
 import laz.dimboba.polyjava3v2.view.score.ScoreField;
 
+import java.net.URISyntaxException;
 import java.util.function.BiConsumer;
 
 public class View extends BorderPane{
@@ -21,6 +22,11 @@ public class View extends BorderPane{
     private LeaderBoard leaderBoard;
     private GameCreator gameCreator;
     public View (GameCreator creator, LeaderBoard leaderBoard){
+        try {
+            this.getStylesheets().add(getClass().getResource("/style.css").toURI().toString());
+        } catch (URISyntaxException e){
+            System.out.println("Styles weren't downloaded");
+        }
         this.gameCreator = creator;
         this.leaderBoard = leaderBoard;
         gameField = new GameField(gameCreator);

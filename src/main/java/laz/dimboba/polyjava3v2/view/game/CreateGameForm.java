@@ -37,10 +37,6 @@ public class CreateGameForm extends StackPane {
 
         Label gameTypeLabel = new Label("Choose game type:");
         Label boardSizeLabel = new Label("Board's size:");
-        gameTypeLabel.setStyle(
-                "-fx-font-weight: bold;" +
-                "-fx-font-size: 14;");
-        boardSizeLabel.setStyle(gameTypeLabel.getStyle());
         root.add(gameTypeLabel, 0, 0);
         root.add(boardSizeLabel, 1, 0);
 

@@ -24,7 +24,7 @@ public class LogInOutButton extends Button {
                 return;
             }
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION,
-                    "Are you really want to log out?",
+                    "Are you really want to log out?\nYou will lost points for ongoing game",
                     ButtonType.YES, ButtonType.NO);
             alert.showAndWait();
             if (alert.getResult() == ButtonType.YES) {

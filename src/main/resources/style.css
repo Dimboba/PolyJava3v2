@@ -6,3 +6,9 @@
     -fx-padding: 0;
     -fx-shape: "";
 }
+
+.label
+{
+    -fx-font-weight: bold;
+    -fx-font-size: 14;
+}

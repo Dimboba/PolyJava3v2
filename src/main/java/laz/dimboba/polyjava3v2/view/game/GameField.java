@@ -4,21 +4,20 @@ import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.geometry.Insets;
+import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.util.Duration;
 import laz.dimboba.polyjava3v2.controller.gamecontroller.GameCreatorImpl;
 import laz.dimboba.polyjava3v2.controller.gamecontroller.GameCreatorListener;
 import laz.dimboba.polyjava3v2.model.game.*;
-import laz.dimboba.polyjava3v2.model.game.exceptions.GameModelException;
 
 import java.util.function.BiConsumer;
 
 public class GameField extends BorderPane implements GameListener {
     private Board board;
     private Timeline timeline;
-    private Model model;
     private GameCreatorListener gameCreatorListener;
-    private final int showTime = 1250;
+    private final int showTime = 1250, winShowTime = 2500;
     private CreateGameForm form;
     public GameField(GameCreator gameCreator){
         this.gameCreatorListener = new GameCreatorImpl(gameCreator);
@@ -28,9 +27,6 @@ public class GameField extends BorderPane implements GameListener {
         this.setCenter(form);
     }
 
-    private final BiConsumer<GameMode, Integer> createGame = (mode, size) -> {
-        gameCreatorListener.createGame(mode, size);
-    };
     @Override
     public void rightPair(Cell cell1, Cell cell2) {
         CellButton cellButton1 = board.getCellButton(cell1);
@@ -79,8 +75,22 @@ public class GameField extends BorderPane implements GameListener {
         this.setCenter(board);
     }
 
+    private final BiConsumer<GameMode, Integer> createGame = (mode, size) -> {
+        gameCreatorListener.createGame(mode, size);
+    };
     @Override
     public void endGame() {
+        Label winLabel = new Label("You won!!!");
+        this.setCenter(winLabel);
+
+        timeline = new Timeline(
+                new KeyFrame(Duration.millis(winShowTime),
+                        ev -> {
+                            form = new CreateGameForm(createGame);
+                            this.setCenter(form);
+                        }));
+        timeline.setCycleCount(1);
+        timeline.play();
 
     }
 }

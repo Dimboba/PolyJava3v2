@@ -14,13 +14,11 @@ public class MainApp extends Application {
     private final int numOfCols = 2;
 
     public void start(Stage mainStage) throws Exception{
-        //TODO: добавить создание таблицы
         GameCreator gameCreator = new GameCreator();
         LeaderBoard leaderBoard = new LeaderBoard();
         gameCreator.addListener(leaderBoard);
         View root = new View(gameCreator, leaderBoard);
         Scene scene = new Scene(root);
-        //scene.getStylesheets().add(getClass().getResource("/style.css").toURI().toString());
         mainStage.setScene(scene);
         mainStage.setTitle("Testing");
         mainStage.show();
