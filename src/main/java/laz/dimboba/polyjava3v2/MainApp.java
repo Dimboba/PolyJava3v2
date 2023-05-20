@@ -5,8 +5,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import laz.dimboba.polyjava3v2.model.game.*;
 import laz.dimboba.polyjava3v2.model.scoreboard.LeaderBoard;
-import laz.dimboba.polyjava3v2.model.scoreboard.userservice.UserService;
-import laz.dimboba.polyjava3v2.model.scoreboard.entity.User;
 import laz.dimboba.polyjava3v2.view.View;
 
 public class MainApp extends Application {
