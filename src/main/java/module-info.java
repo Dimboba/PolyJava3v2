@@ -16,4 +16,6 @@ module laz.dimboba.polyjava3v2 {
     exports laz.dimboba.polyjava3v2.view.game;
     opens laz.dimboba.polyjava3v2.view.game to javafx.fxml;
     opens laz.dimboba.polyjava3v2.model.scoreboard.entity to javafx.base;
+    exports laz.dimboba.polyjava3v2.model.game;
+    opens laz.dimboba.polyjava3v2.model.game to javafx.fxml;
 }

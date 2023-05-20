@@ -37,7 +37,7 @@ public class CellButton extends Button {
         this.setStyle(baseStyle);
     }
 
-    private void onClick(String data) throws UnknownCellException{
+    private void onClick(String data) throws UnknownCellException {
         if(cell instanceof ColourCell){
             this.setStyle("-fx-background-color: " + data + "; ");
         } else if(cell instanceof SoundCell){
