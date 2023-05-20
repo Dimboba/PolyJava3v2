@@ -57,6 +57,7 @@ public class CreateGameForm extends StackPane {
                 }
             }
         });
+        root.add(sendButton, 1, 2);
 
         root.setAlignment(Pos.CENTER);
         root.setHgap(10);

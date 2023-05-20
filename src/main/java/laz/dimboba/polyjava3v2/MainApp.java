@@ -17,7 +17,7 @@ public class MainApp extends Application {
         //TODO: добавить создание таблицы
         GameCreator gameCreator = new GameCreator();
         LeaderBoard leaderBoard = new LeaderBoard();
-
+        gameCreator.addListener(leaderBoard);
         View root = new View(gameCreator, leaderBoard);
         Scene scene = new Scene(root);
         //scene.getStylesheets().add(getClass().getResource("/style.css").toURI().toString());

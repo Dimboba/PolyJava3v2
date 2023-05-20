@@ -6,22 +6,35 @@ import javafx.animation.Timeline;
 import javafx.geometry.Insets;
 import javafx.scene.layout.BorderPane;
 import javafx.util.Duration;
-import laz.dimboba.polyjava3v2.model.game.Cell;
-import laz.dimboba.polyjava3v2.model.game.GameListener;
-import laz.dimboba.polyjava3v2.model.game.Model;
-import laz.dimboba.polyjava3v2.model.game.ModelImpl;
+import laz.dimboba.polyjava3v2.model.game.*;
+import laz.dimboba.polyjava3v2.model.game.exceptions.GameModelException;
+
+import java.util.function.BiConsumer;
 
 public class GameField extends BorderPane implements GameListener {
-    private final Board board;
+    private Board board;
     private Timeline timeline;
+    private Model model;
+    private GameCreator gameCreator;
     private final int showTime = 1250;
-    public GameField(Model model){
+    private CreateGameForm form;
+    public GameField(GameCreator gameCreator){
+        this.gameCreator = gameCreator;
         this.setPadding(new Insets(10, 10, 10, 10));
 
-        board = new Board(model);
-        this.setCenter(board);
+        form = new CreateGameForm(createGame);
+        this.setCenter(form);
     }
 
+    private final BiConsumer<GameMode, Integer> createGame = (mode, size) -> {
+        try {
+            model = gameCreator.createNewGame(mode, size);
+        } catch (GameModelException e){
+            throw new RuntimeException(e);
+        }
+        board = new Board(model);
+        this.setCenter(board);
+    };
     @Override
     public void rightPair(Cell cell1, Cell cell2) {
         CellButton cellButton1 = board.getCellButton(cell1);
