@@ -10,11 +10,12 @@ public abstract class ModelImpl implements Model{
     private final int numOfCols, numOfRows, numOfCells;
     private int closedCells;
     private final List<Cell> cells;
-    private List<GameListener> listeners;
+    protected List<GameListener> listeners;
     private Cell firstCell = null;
 
 
-    protected ModelImpl(int numOfCols, int numOfRows) throws NotEvenCellsNumberException {
+    protected ModelImpl(int numOfCols, int numOfRows, List<GameListener> listeners) throws NotEvenCellsNumberException {
+        this.listeners = listeners;
         this.numOfCols = numOfCols;
         this.numOfRows = numOfRows;
         numOfCells = numOfCols * numOfRows;
@@ -25,7 +26,6 @@ public abstract class ModelImpl implements Model{
 
         listeners = new ArrayList<>();
         cells = new ArrayList<Cell>();
-
     }
 
     public Cell getCell(int col, int row){
@@ -37,9 +37,6 @@ public abstract class ModelImpl implements Model{
         return null;
     }
 
-    public void addListener(GameListener gameListener){
-        listeners.add(gameListener);
-    }
 
     public void makeTurn(Cell cell){
         cell.setOpened(true);
@@ -74,7 +71,6 @@ public abstract class ModelImpl implements Model{
         for(int i = 0; i < cells.size()/2; i++){
             cells.get(i).pairCells(cells.get(cells.size()/2 + i), i);
         }
-        listeners.forEach(listener -> listener.newGame());
     }
 
     protected List<Cell> getCells(){

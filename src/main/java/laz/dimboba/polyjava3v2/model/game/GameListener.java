@@ -5,5 +5,5 @@ public interface GameListener{
     void wrongPair(Cell cell1, Cell cell2);
     void rightPair(Cell cell1, Cell cell2);
     void endGame();
-    void newGame();
+    void newGame(Model model);
 }

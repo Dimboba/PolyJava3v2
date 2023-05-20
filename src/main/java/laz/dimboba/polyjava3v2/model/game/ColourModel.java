@@ -3,6 +3,8 @@ package laz.dimboba.polyjava3v2.model.game;
 import laz.dimboba.polyjava3v2.model.game.exceptions.NotEnoughColorsException;
 import laz.dimboba.polyjava3v2.model.game.exceptions.NotEvenCellsNumberException;
 
+import java.util.List;
+
 public class ColourModel extends ModelImpl {
     private String[] colors = {
             "#78c5d6",
@@ -14,8 +16,9 @@ public class ColourModel extends ModelImpl {
             "#e868a3",
             "#bf62a6"
     };
-    public ColourModel(int numOfRows, int numOfCols) throws NotEvenCellsNumberException, NotEnoughColorsException{
-        super(numOfRows, numOfCols);
+    public ColourModel(int numOfRows, int numOfCols, List<GameListener> list)
+            throws NotEvenCellsNumberException, NotEnoughColorsException{
+        super(numOfRows, numOfCols, list);
         for(int i = 0; i < numOfRows; i++){
             for(int j = 0; j < numOfCols; j++){
                 ColourCell colourCell = new ColourCell(i,j);
@@ -26,6 +29,8 @@ public class ColourModel extends ModelImpl {
             throw new NotEnoughColorsException("Not enough colors");
         }
         makeNewPairs();
+
+        super.listeners.forEach(listener -> listener.newGame(this));
     }
 
     @Override

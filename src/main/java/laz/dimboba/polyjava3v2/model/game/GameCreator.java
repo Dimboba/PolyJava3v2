@@ -17,20 +17,18 @@ public class GameCreator {
     public void addListener(GameListener listener){
         listeners.add(listener);
     }
-    public Model createNewGame(GameMode gameMode, int size)
+    public void createNewGame(GameMode gameMode, int size)
             throws NotEvenCellsNumberException, NotEnoughColorsException, WrongGameModeException {
         switch (gameMode){
             case Sound -> {
-                model = new SoundModel(size, size);
+                model = new SoundModel(size, size, listeners);
             }
             case Colour -> {
-                model = new ColourModel(size, size);
+                model = new ColourModel(size, size, listeners);
             }
             default -> {
                 throw new WrongGameModeException("Wrong Game mode");
             }
         }
-        listeners.forEach(listener -> model.addListener(listener));
-        return model;
     }
 }

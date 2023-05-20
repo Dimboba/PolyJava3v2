@@ -2,6 +2,7 @@ package laz.dimboba.polyjava3v2.model.scoreboard;
 
 import laz.dimboba.polyjava3v2.model.game.Cell;
 import laz.dimboba.polyjava3v2.model.game.GameListener;
+import laz.dimboba.polyjava3v2.model.game.Model;
 import laz.dimboba.polyjava3v2.model.scoreboard.userservice.UserService;
 import laz.dimboba.polyjava3v2.model.scoreboard.entity.User;
 
@@ -35,7 +36,7 @@ public class LeaderBoard implements GameListener {
 
 
     @Override
-    public void newGame() {
+    public void newGame(Model model) {
         if(currUser != null){
             gameForPoints = true;
         }
