@@ -15,14 +15,14 @@ import laz.dimboba.polyjava3v2.model.game.*;
 import java.util.function.BiConsumer;
 
 public class GameField extends BorderPane implements GameListener {
-    private Model model;
+    private GameModel model;
     private Board board;
     private final StatusBar statusBar;
     private Timeline timeline;
     private GameCreatorListener gameCreatorListener;
     private final int showTime = 1250, winShowTime = 2500;
     private CreateGameForm form;
-    public GameField(GameCreator gameCreator){
+    public GameField(GameLauncher gameCreator){
         this.statusBar = new StatusBar(gameCreator);
         gameCreator.addListener(statusBar);
         this.setBottom(statusBar);
@@ -76,7 +76,7 @@ public class GameField extends BorderPane implements GameListener {
     }
 
     @Override
-    public void newGame(Model model) {
+    public void newGame(GameModel model) {
         this.model = model;
         board = new Board(model);
         this.setCenter(board);

@@ -7,9 +7,9 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import laz.dimboba.polyjava3v2.model.game.EndGameType;
 import laz.dimboba.polyjava3v2.model.game.Cell;
-import laz.dimboba.polyjava3v2.model.game.GameCreator;
+import laz.dimboba.polyjava3v2.model.game.GameLauncher;
 import laz.dimboba.polyjava3v2.model.game.GameListener;
-import laz.dimboba.polyjava3v2.model.game.Model;
+import laz.dimboba.polyjava3v2.model.game.GameModel;
 
 public class StatusBar extends HBox implements GameListener {
     private final Label gameStatus;
@@ -17,9 +17,9 @@ public class StatusBar extends HBox implements GameListener {
     private final Label steps;
     private int numOfMoves;
     private Button restart;
-    private Model model;
-    private final GameCreator gameCreator;
-    public StatusBar(GameCreator gameCreator){
+    private GameModel model;
+    private final GameLauncher gameCreator;
+    public StatusBar(GameLauncher gameCreator){
         this.gameCreator = gameCreator;
         gameStatus = new Label("Game is off");
         stepsToWin = new Label();
@@ -63,7 +63,7 @@ public class StatusBar extends HBox implements GameListener {
     }
 
     @Override
-    public void newGame(Model model) {
+    public void newGame(GameModel model) {
         numOfMoves = 0;
         this.model = model;
         restart.setVisible(true);

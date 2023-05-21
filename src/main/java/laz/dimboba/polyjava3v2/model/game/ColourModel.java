@@ -5,7 +5,7 @@ import laz.dimboba.polyjava3v2.model.game.exceptions.NotEvenCellsNumberException
 
 import java.util.List;
 
-public class ColourModel extends ModelImpl {
+public class ColourModel extends GameModelImpl {
     private String[] colors = {
             "#78c5d6",
             "#449ba9",

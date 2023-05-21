@@ -5,7 +5,7 @@ import laz.dimboba.polyjava3v2.model.game.exceptions.NotEvenCellsNumberException
 
 import java.util.List;
 
-public class SoundModel extends ModelImpl{
+public class SoundModel extends GameModelImpl {
     private MediaPlayer mediaPlayer;
     private String colour = "#82888d";
     private String[] sounds = {

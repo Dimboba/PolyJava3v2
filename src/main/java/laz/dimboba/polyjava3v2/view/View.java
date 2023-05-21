@@ -1,27 +1,19 @@
 package laz.dimboba.polyjava3v2.view;
 
 import javafx.scene.layout.BorderPane;
-import laz.dimboba.polyjava3v2.model.game.GameCreator;
-import laz.dimboba.polyjava3v2.model.game.GameMode;
-import laz.dimboba.polyjava3v2.model.game.Model;
-import laz.dimboba.polyjava3v2.model.game.exceptions.GameModelException;
-import laz.dimboba.polyjava3v2.model.game.exceptions.NotEnoughColorsException;
-import laz.dimboba.polyjava3v2.model.game.exceptions.NotEvenCellsNumberException;
-import laz.dimboba.polyjava3v2.model.game.exceptions.WrongGameModeException;
+import laz.dimboba.polyjava3v2.model.game.GameLauncher;
 import laz.dimboba.polyjava3v2.model.scoreboard.LeaderBoard;
-import laz.dimboba.polyjava3v2.view.game.CreateGameForm;
 import laz.dimboba.polyjava3v2.view.game.GameField;
 import laz.dimboba.polyjava3v2.view.score.ScoreField;
 
 import java.net.URISyntaxException;
-import java.util.function.BiConsumer;
 
 public class View extends BorderPane{
     private GameField gameField;
     private final ScoreField scoreField;
     private LeaderBoard leaderBoard;
-    private GameCreator gameCreator;
-    public View (GameCreator creator, LeaderBoard leaderBoard){
+    private GameLauncher gameCreator;
+    public View (GameLauncher creator, LeaderBoard leaderBoard){
         try {
             this.getStylesheets().add(getClass().getResource("/style.css").toURI().toString());
         } catch (URISyntaxException e){

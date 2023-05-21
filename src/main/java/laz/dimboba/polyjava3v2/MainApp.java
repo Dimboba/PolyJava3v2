@@ -12,7 +12,7 @@ public class MainApp extends Application {
     private final int numOfCols = 2;
 
     public void start(Stage mainStage) throws Exception{
-        GameCreator gameCreator = new GameCreator();
+        GameLauncher gameCreator = new GameLauncher();
         LeaderBoard leaderBoard = new LeaderBoard();
         gameCreator.addListener(leaderBoard);
         View root = new View(gameCreator, leaderBoard);

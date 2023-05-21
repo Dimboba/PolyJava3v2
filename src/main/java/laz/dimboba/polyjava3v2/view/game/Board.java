@@ -6,7 +6,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 import laz.dimboba.polyjava3v2.controller.gamecontroller.BoardListener;
 import laz.dimboba.polyjava3v2.model.game.Cell;
-import laz.dimboba.polyjava3v2.model.game.Model;
+import laz.dimboba.polyjava3v2.model.game.GameModel;
 
 import java.util.HashMap;
 //TODO: добавить цвета
@@ -14,7 +14,7 @@ public class Board extends GridPane {
     private BoardListener listener;
     private HashMap<Cell, CellButton> cellButtonMap;
 
-    public Board(Model model) {
+    public Board(GameModel model) {
 
         cellButtonMap = new HashMap<>();
         listener = new BoardListener(model);

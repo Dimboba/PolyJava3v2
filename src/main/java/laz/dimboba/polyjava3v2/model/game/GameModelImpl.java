@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public abstract class ModelImpl implements Model{
+public abstract class GameModelImpl implements GameModel {
     private final int numOfCols, numOfRows, numOfCells;
     private int closedCells;
     private final List<Cell> cells;
@@ -15,7 +15,7 @@ public abstract class ModelImpl implements Model{
     private boolean gameIsOn;
 
 
-    protected ModelImpl(int numOfCols, int numOfRows, List<GameListener> listeners) throws NotEvenCellsNumberException {
+    protected GameModelImpl(int numOfCols, int numOfRows, List<GameListener> listeners) throws NotEvenCellsNumberException {
         gameIsOn = true;
         this.listeners = listeners;
         this.numOfCols = numOfCols;

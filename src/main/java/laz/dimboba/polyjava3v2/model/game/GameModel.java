@@ -1,6 +1,6 @@
 package laz.dimboba.polyjava3v2.model.game;
 
-public interface Model {
+public interface GameModel {
     Cell getCell(int col, int row);
     void makeTurn(Cell cell);
     int getNumOfCols();
