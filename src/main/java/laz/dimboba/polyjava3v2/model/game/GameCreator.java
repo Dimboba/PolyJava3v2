@@ -1,6 +1,5 @@
 package laz.dimboba.polyjava3v2.model.game;
 
-import laz.dimboba.polyjava3v2.model.EndGameType;
 import laz.dimboba.polyjava3v2.model.game.exceptions.NotEnoughColorsException;
 import laz.dimboba.polyjava3v2.model.game.exceptions.NotEvenCellsNumberException;
 import laz.dimboba.polyjava3v2.model.game.exceptions.WrongGameModeException;

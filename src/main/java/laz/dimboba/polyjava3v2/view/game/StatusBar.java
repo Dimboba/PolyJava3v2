@@ -5,7 +5,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
-import laz.dimboba.polyjava3v2.model.EndGameType;
+import laz.dimboba.polyjava3v2.model.game.EndGameType;
 import laz.dimboba.polyjava3v2.model.game.Cell;
 import laz.dimboba.polyjava3v2.model.game.GameCreator;
 import laz.dimboba.polyjava3v2.model.game.GameListener;

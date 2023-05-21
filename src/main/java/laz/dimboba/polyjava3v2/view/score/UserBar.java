@@ -15,6 +15,7 @@ public class UserBar extends VBox {
     private final Label score;
     private final LeaderBoard leaderBoard;
     private final LogInOutButton logInOut;
+    private final ChangeAccountButton account;
     UserBar(LeaderBoard leaderBoard, UserListener listener){
         this.leaderBoard = leaderBoard;
         this.listener = listener;
@@ -28,8 +29,7 @@ public class UserBar extends VBox {
         } else {
             logInOut = new LogInOutButton("Log Out", leaderBoard, listener);
         }
-        //TODO: при выходе очки никому не начисляются, игра прекращается, выползает окно
-        Button account = new Button("Account");
+        account = new ChangeAccountButton("Account", leaderBoard, listener);
 
         buttons.getChildren().addAll(logInOut, account);
         buttons.setAlignment(Pos.CENTER);

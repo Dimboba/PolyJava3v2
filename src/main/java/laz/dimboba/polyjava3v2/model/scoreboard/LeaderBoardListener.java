@@ -5,4 +5,5 @@ public interface LeaderBoardListener {
     public void logInError(String message);
     public void logInSuccess();
     public void logOut();
+    public void changeNicknameError();
 }

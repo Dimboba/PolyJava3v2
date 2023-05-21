@@ -1,6 +1,5 @@
 package laz.dimboba.polyjava3v2.model.game;//import javax.sound.midi.*;
 
-import laz.dimboba.polyjava3v2.model.EndGameType;
 import laz.dimboba.polyjava3v2.model.game.exceptions.NotEvenCellsNumberException;
 
 import java.util.ArrayList;

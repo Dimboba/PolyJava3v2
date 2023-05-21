@@ -11,7 +11,7 @@ public class UserService {
 
     public UserService() {}
 
-    public User logIn(String nickname, String password){
+    public User findByNickname(String nickname){
         User user = userDao.findByNickname(nickname);
         return user;
     }

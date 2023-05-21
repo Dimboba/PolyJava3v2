@@ -35,6 +35,7 @@ public class ScoreField extends BorderPane implements LeaderBoardListener {
 
     @Override
     public void refresh() {
+        userBar.refresh();
         table.refresh();
     }
 
@@ -57,6 +58,14 @@ public class ScoreField extends BorderPane implements LeaderBoardListener {
     @Override
     public void logOut() {
         userBar.refresh();
+    }
+
+    @Override
+    public void changeNicknameError(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION,
+                "There are already user with this nickname",
+                ButtonType.OK);
+        alert.showAndWait();
     }
 }
 

@@ -41,7 +41,9 @@ public class UserDaoImpl implements UserDao{
             String query = "Select * FROM users where nickname in (\'" + searchNickname + "\')";
 
             ResultSet res = statement.executeQuery(query);
-            res.next();
+            if(!res.next()){
+                return null;
+            }
 
             String nickname = res.getString("nickname");
             int id = res.getInt("id");
