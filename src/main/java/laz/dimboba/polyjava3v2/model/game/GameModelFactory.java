@@ -16,7 +16,7 @@ public class GameModelFactory {
                 return new ColourModel(size, size, listeners);
             }
             default -> {
-                throw new WrongGameModeException("Wrong Game mode");
+                throw new WrongGameModeException("Unrealised game mode");
             }
         }
     }
