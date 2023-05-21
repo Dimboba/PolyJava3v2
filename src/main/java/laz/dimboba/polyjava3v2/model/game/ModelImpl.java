@@ -1,5 +1,6 @@
 package laz.dimboba.polyjava3v2.model.game;//import javax.sound.midi.*;
 
+import laz.dimboba.polyjava3v2.model.EndGameType;
 import laz.dimboba.polyjava3v2.model.game.exceptions.NotEvenCellsNumberException;
 
 import java.util.ArrayList;
@@ -12,9 +13,11 @@ public abstract class ModelImpl implements Model{
     private final List<Cell> cells;
     protected List<GameListener> listeners;
     private Cell firstCell = null;
+    private boolean gameIsOn;
 
 
     protected ModelImpl(int numOfCols, int numOfRows, List<GameListener> listeners) throws NotEvenCellsNumberException {
+        gameIsOn = true;
         this.listeners = listeners;
         this.numOfCols = numOfCols;
         this.numOfRows = numOfRows;
@@ -53,11 +56,12 @@ public abstract class ModelImpl implements Model{
         if(cell1.getPairCell() == cell2){
             System.out.println("Right pair");
             closedCells -= 2;
+            listeners.forEach(listener -> listener.rightPair(cell1, cell2));
             if(closedCells == 0){
                 System.out.println("Win");
-                listeners.forEach(listener -> listener.endGame());
+                gameIsOn = false;
+                listeners.forEach(listener -> listener.endGame(EndGameType.Win));
             }
-            listeners.forEach(listener -> listener.rightPair(cell1, cell2));
             return;
         }
         cell1.setOpened(false);
@@ -90,5 +94,12 @@ public abstract class ModelImpl implements Model{
 
     public int getClosedCells() {
         return closedCells;
+    }
+    public int getOpenedCells(){
+        return numOfCells - closedCells;
+    }
+
+    public boolean isGameIsOn() {
+        return gameIsOn;
     }
 }

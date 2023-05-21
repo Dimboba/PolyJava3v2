@@ -25,6 +25,7 @@ public class CreateGameForm extends StackPane {
         RadioButton colour = new RadioButton("Colour");
         mode.getToggles().addAll(sound, colour);
         radioBox = new VBox(sound, colour);
+        radioBox.setSpacing(10);
         root.add(radioBox, 0, 1);
 
         char times = '\u00D7';

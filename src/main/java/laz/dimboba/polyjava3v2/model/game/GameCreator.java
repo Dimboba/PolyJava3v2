@@ -1,5 +1,6 @@
 package laz.dimboba.polyjava3v2.model.game;
 
+import laz.dimboba.polyjava3v2.model.EndGameType;
 import laz.dimboba.polyjava3v2.model.game.exceptions.NotEnoughColorsException;
 import laz.dimboba.polyjava3v2.model.game.exceptions.NotEvenCellsNumberException;
 import laz.dimboba.polyjava3v2.model.game.exceptions.WrongGameModeException;
@@ -30,5 +31,9 @@ public class GameCreator {
                 throw new WrongGameModeException("Wrong Game mode");
             }
         }
+    }
+    public void stopTheGame(){
+        model = null;
+        listeners.forEach(listener -> listener.endGame(EndGameType.Loose));
     }
 }

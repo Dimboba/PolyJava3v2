@@ -4,27 +4,35 @@ import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.geometry.Insets;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.util.Duration;
 import laz.dimboba.polyjava3v2.controller.gamecontroller.GameCreatorImpl;
 import laz.dimboba.polyjava3v2.controller.gamecontroller.GameCreatorListener;
+import laz.dimboba.polyjava3v2.model.EndGameType;
 import laz.dimboba.polyjava3v2.model.game.*;
 
 import java.util.function.BiConsumer;
 
 public class GameField extends BorderPane implements GameListener {
+    private Model model;
     private Board board;
+    private final StatusBar statusBar;
     private Timeline timeline;
     private GameCreatorListener gameCreatorListener;
     private final int showTime = 1250, winShowTime = 2500;
     private CreateGameForm form;
     public GameField(GameCreator gameCreator){
+        this.statusBar = new StatusBar(gameCreator);
+        gameCreator.addListener(statusBar);
+        this.setBottom(statusBar);
+
         this.gameCreatorListener = new GameCreatorImpl(gameCreator);
         this.setPadding(new Insets(10, 10, 10, 10));
 
-        form = new CreateGameForm(createGame);
-        this.setCenter(form);
+        createForm();
     }
 
     @Override
@@ -71,6 +79,7 @@ public class GameField extends BorderPane implements GameListener {
 
     @Override
     public void newGame(Model model) {
+        this.model = model;
         board = new Board(model);
         this.setCenter(board);
     }
@@ -78,16 +87,23 @@ public class GameField extends BorderPane implements GameListener {
     private final BiConsumer<GameMode, Integer> createGame = (mode, size) -> {
         gameCreatorListener.createGame(mode, size);
     };
+    public void createForm(){
+        form = new CreateGameForm(createGame);
+        this.setCenter(form);
+    }
     @Override
-    public void endGame() {
+    public void endGame(EndGameType type) {
+        if(type == EndGameType.Loose){
+            createForm();
+            return;
+        }
         Label winLabel = new Label("You won!!!");
         this.setCenter(winLabel);
 
         timeline = new Timeline(
                 new KeyFrame(Duration.millis(winShowTime),
                         ev -> {
-                            form = new CreateGameForm(createGame);
-                            this.setCenter(form);
+                            createForm();
                         }));
         timeline.setCycleCount(1);
         timeline.play();

@@ -7,4 +7,6 @@ public interface Model {
     int getNumOfRows();
     int getNumOfCells();
     int getClosedCells();
+    int getOpenedCells();
+    boolean isGameIsOn();
 }

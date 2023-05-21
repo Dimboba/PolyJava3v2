@@ -1,5 +1,6 @@
 package laz.dimboba.polyjava3v2.model.scoreboard;
 
+import laz.dimboba.polyjava3v2.model.EndGameType;
 import laz.dimboba.polyjava3v2.model.game.Cell;
 import laz.dimboba.polyjava3v2.model.game.GameListener;
 import laz.dimboba.polyjava3v2.model.game.Model;
@@ -47,7 +48,7 @@ public class LeaderBoard implements GameListener {
 
     }
     @Override
-    public void endGame() {
+    public void endGame(EndGameType type) {
         if(gameForPoints){
             //TODO: начислять поинты
         }

@@ -1,19 +1,25 @@
 package laz.dimboba.polyjava3v2.model.game;
 
+import javafx.scene.media.MediaPlayer;
 import laz.dimboba.polyjava3v2.model.game.exceptions.NotEvenCellsNumberException;
 
 import java.util.List;
 
 public class SoundModel extends ModelImpl{
+    private MediaPlayer mediaPlayer;
+    private String colour = "#82888d";
     private String[] sounds = {
-            //TODO: тут должны быть файлы
+            "1.wav",
+            "2.wav"
     };
     public SoundModel(int numOfCols, int numOfRows, List<GameListener> list) throws NotEvenCellsNumberException {
 
         super(numOfCols, numOfRows, list);
         for (int i = 0; i < numOfRows; i++) {
             for (int j = 0; j < numOfCols; j++) {
-                getCells().add(new SoundCell(i, j));
+                SoundCell cell = new SoundCell(i, j, mediaPlayer);
+                cell.setColour(colour);
+                getCells().add(cell);
             }
         }
         makeNewPairs();
@@ -24,8 +30,9 @@ public class SoundModel extends ModelImpl{
         super.makeNewPairs();
         super.makeNewPairs();
         for(int i = 0; i < super.getCells().size()/2; i++) {
-            ((SoundCell) super.getCells().get(i)).setSoundFile(sounds[i]);
-            ((SoundCell) super.getCells().get(i).getPairCell()).setSoundFile(sounds[i]);
+            String url = "/sounds/" + sounds[i];
+            ((SoundCell) super.getCells().get(i)).setSoundFile(url);
+            ((SoundCell) super.getCells().get(i).getPairCell()).setSoundFile(url);
         }
     }
 

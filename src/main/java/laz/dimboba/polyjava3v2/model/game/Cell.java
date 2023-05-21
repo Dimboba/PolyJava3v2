@@ -9,10 +9,12 @@ public interface Cell {
     void setOpened(boolean opened);
     Cell getPairCell();
     void pairCells(Cell cell, int numOfPair);
-    void onClick(Consumer<String> consumer);
+    void onClick();
     int getNumOfPair();
     void setNumOfPair(int num);
     void setPairCell(Cell cell);
+    void setColour(String colour);
+    String getColour();
 }
 //
 //interface Expression{

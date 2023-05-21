@@ -38,7 +38,7 @@ public abstract class CellImpl implements Cell{
     }
 
     @Override
-    public abstract void onClick(Consumer<String> consumer);
+    public abstract void onClick();
 
     public void setNumOfPair(int newPair){
         this.numOfPair = newPair;

@@ -9,8 +9,8 @@ public class ColourCell extends CellImpl{
     }
 
     @Override
-    public void onClick(Consumer<String> function) {
-        function.accept(colour);
+    public void onClick() {
+        System.out.println(colour);
     }
 
     public String getColour() {

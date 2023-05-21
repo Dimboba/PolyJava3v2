@@ -13,9 +13,9 @@ public class BoardListener implements CellListener{
     }
 
     @Override
-    public void cellClicked(Cell cell, Consumer<String> consumer) {
+    public void cellClicked(Cell cell) {
         if(!cell.isOpened()) {
-            cell.onClick(consumer);
+            cell.onClick();
             System.out.println("Click row:" + cell.getRow() + " column: " + cell.getCol());
             model.makeTurn(cell);
         }
