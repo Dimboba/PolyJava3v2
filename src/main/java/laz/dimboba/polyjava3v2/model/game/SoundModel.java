@@ -10,7 +10,13 @@ public class SoundModel extends GameModelImpl {
     private String colour = "#82888d";
     private String[] sounds = {
             "1.wav",
-            "2.wav"
+            "2.wav",
+            "3.wav",
+            "4.wav",
+            "5.wav",
+            "6.wav",
+            "7.wav",
+            "8.wav"
     };
     public SoundModel(int numOfCols, int numOfRows, List<GameListener> list) throws NotEvenCellsNumberException {
 

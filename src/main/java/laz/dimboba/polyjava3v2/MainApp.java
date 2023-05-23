@@ -18,7 +18,7 @@ public class MainApp extends Application {
         View root = new View(gameCreator, leaderBoard);
         Scene scene = new Scene(root);
         mainStage.setScene(scene);
-        mainStage.setTitle("Testing");
+        mainStage.setTitle("Memory Game");
         mainStage.show();
     }
 
