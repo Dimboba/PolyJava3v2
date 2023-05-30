@@ -8,6 +8,9 @@ module laz.dimboba.polyjava3v2 {
     requires com.almasb.fxgl.all;
     requires javafx.media;
     requires java.sql;
+    //requires jakarta.transaction;
+    requires jakarta.cdi;
+    requires jakarta.interceptor;
 
     opens laz.dimboba.polyjava3v2 to javafx.fxml;
     exports laz.dimboba.polyjava3v2;
