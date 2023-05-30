@@ -2,6 +2,7 @@ package laz.dimboba.polyjava3v2;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import laz.dimboba.polyjava3v2.model.game.*;
 import laz.dimboba.polyjava3v2.model.scoreboard.LeaderBoard;
@@ -12,6 +13,7 @@ public class MainApp extends Application {
     private final int numOfCols = 2;
 
     public void start(Stage mainStage) throws Exception{
+        mainStage.getIcons().add(new Image(getClass().getResource("/icon.png").toURI().toString()));
         GameLauncher gameCreator = new GameLauncher();
         LeaderBoard leaderBoard = new LeaderBoard();
         gameCreator.addListener(leaderBoard);

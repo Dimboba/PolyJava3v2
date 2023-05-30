@@ -45,8 +45,8 @@ dependencies {
     }
     implementation 'org.postgresql:postgresql:42.6.0'
 
-    testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+    testCompileOnly 'org.junit.jupiter:junit-jupiter-api:5.5.1'
+    testCompileOnly "org.testfx:testfx-junit5:4.0.16-alpha"
 }
 
 test {

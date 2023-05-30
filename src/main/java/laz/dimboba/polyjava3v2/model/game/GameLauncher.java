@@ -30,4 +30,9 @@ public class GameLauncher {
         model = null;
         listeners.forEach(listener -> listener.endGame(EndGameType.Loose));
     }
+
+    //for tests only
+    public GameModel getModel() {
+        return model;
+    }
 }
